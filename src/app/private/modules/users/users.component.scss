@@ -1,0 +1,17 @@
+.container{
+  height: 90vh;
+  width: 98%;
+  display: grid;
+  grid-template-rows: 20% 68%;
+  grid-gap: 5%;
+  gap: 5%;
+  padding: 20px;
+}
+
+:host ::ng-deep {
+.mat-toolbar-row, .mat-toolbar-single-row {
+  justify-content: center;
+  background-color: #0080ffe0;
+  color: #fafafa;
+}
+}

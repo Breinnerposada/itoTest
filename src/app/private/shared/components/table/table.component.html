@@ -1,0 +1,71 @@
+
+<div class="mat-elevation-z5 demo-table table">
+  <table mat-table  [dataSource]="dataSource
+  | filterColumn:
+  filterUser.user : 'user' |
+  filterColumn: filterUser.email : 'email' |
+  filterColumn: filterUser.firstName : 'firstName' |
+  filterColumn: filterUser.lastName : 'lastName'"
+  class="mat-elevation-z8">
+
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef> User. </th>
+      <td mat-cell *matCellDef="let data"> {{data.user}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> FirstName </th>
+      <td mat-cell *matCellDef="let data"> {{data.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> LastName </th>
+      <td mat-cell *matCellDef="let data"> {{data.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let data"> {{data.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="active">
+      <th mat-header-cell *matHeaderCellDef> Active </th>
+      <td mat-cell *matCellDef="let data">
+        <div class="status" *ngIf="data.active">
+          <span class="status_active"></span>
+          <span>Si</span>
+        </div>
+        <div class="status" *ngIf="data.active === false">
+          <span class="status_inactive"></span>
+          <span>No</span>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let data">
+        <div class="buttons">
+          <button color="accent"  mat-mini-fab (click)="openViewUser(data)">
+            <span class="material-icons">
+              search
+            </span>
+          </button>
+          <button  color="primary" mat-mini-fab (click)="openEditUser(data)">
+            <span class="material-icons">
+              mode_edit_outline
+              </span>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

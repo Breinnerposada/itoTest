@@ -1,0 +1,51 @@
+
+
+    <h2 mat-dialog-title>
+      {{title}}
+    </h2>
+
+    <mat-dialog-content>
+    <form [formGroup]="userForm"  class="form">
+      <mat-form-field  appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email"  matInput  placeholder="correo@correo.com">
+
+      </mat-form-field>
+
+      <mat-form-field  appearance="fill">
+        <mat-label>User</mat-label>
+        <input formControlName="user" matInput  placeholder="Felipe_Posada">
+
+      </mat-form-field>
+
+      <mat-form-field  appearance="fill">
+        <mat-label>Name</mat-label>
+        <input formControlName="firstName" matInput  placeholder="Breinner">
+
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>LastName</mat-label>
+        <input formControlName="lastName" matInput  placeholder="Posada">
+
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!editForm" appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="active">
+          <mat-option [value]="true">Active</mat-option>
+          <mat-option [value]="false">Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-slide-toggle *ngIf="editForm" formControlName="active">
+        Status
+      </mat-slide-toggle>
+    </form>
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button [disabled]="readonly" (click)="handleSubmit()" mat-button >Save</button>
+      <button  mat-button [mat-dialog-close]="true">Close</button>
+    </mat-dialog-actions>
+
